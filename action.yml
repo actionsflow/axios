@@ -1,0 +1,51 @@
+name: 'Axios Action'
+description: 'Make a request based on axios'
+inputs:
+  url: 
+    description: 'The target url'
+  method:
+    description: 'The request method, basically one of GET, POST, PUT, PATCH'
+    default: 'GET'
+  accept:
+    description: 'List of status codes to be accepted, else it is considerred to be failed'
+    default: 200,201,204
+  headers:
+    description: 'Headers object'
+  content-type:
+    description: "Content-Type, if data is json string, th default value will be application/json"
+  params:
+    description: 'Params object'
+  data:
+    description: 'body string, can be json string'
+  timeout:
+    description: 'timeout (millisec)'
+    default: 0
+  basic-auth:
+    description: 'Basic authentication, format =>  username:password'
+  bearer-token: 
+    description: 'Bearer Token'
+  proxy-url:
+    description: 'Proxy host, format =>  host:port'
+  proxy-auth: 
+    description: 'Proxy authentication, format =>  username:password'
+  is_debug: 
+    description: 'show debug message of response'
+    default: false
+  retry:
+    default: 1/1
+  custom-config:
+    description: custom config
+
+outputs:
+  data:
+    description: 'The response data, type: string'
+  headers:
+    description: 'The response headers, type: json string'
+  status:
+    description: "The response status code"
+branding:
+  icon: 'download'  
+  color: 'gray-dark'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

@@ -1,0 +1,38 @@
+{
+  "name": "curl",
+  "version": "1.0.0",
+  "description": "github action for CURL",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "ncc build src/index.ts -m",
+    "release": "npm run build && git add dist/index.js && (git diff-index --quiet HEAD || git commit -m \"chore: add build\") && release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agoda-com/curl.git"
+  },
+  "keywords": [
+    "github-action-curl"
+  ],
+  "author": "agoda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agoda-com/curl/issues"
+  },
+  "homepage": "https://github.com/agoda-com/curl#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.3",
+    "axios": "^0.19.2",
+    "execall": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.13",
+    "@types/node": "^13.11.1",
+    "@vercel/ncc": "^0.24.0",
+    "jest": "^26.4.2",
+    "release-it": "^14.0.3",
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2"
+  }
+}
