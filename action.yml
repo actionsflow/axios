@@ -17,6 +17,8 @@ inputs:
     description: 'Params object'
   data:
     description: 'body string, can be json string'
+  body:
+    description: 'alisa of data, body string, can be json string'
   timeout:
     description: 'timeout (millisec)'
     default: 0

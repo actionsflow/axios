@@ -68,6 +68,8 @@ if(core.getInput('basic-auth')){
 }
 if(core.getInput('data')){
     config.data = getEscapeString(core.getInput('data'))
+}else if(core.getInput('body')){
+    config.data = getEscapeString(core.getInput('body'))
 }
 if(core.getInput('headers')){
     config.headers = JSON.parse(getEscapeString(core.getInput('headers')))

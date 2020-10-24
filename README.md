@@ -34,7 +34,7 @@ jobs:
                 # support escape string, use <<<${{env.TEST}}>>>
                 headers: '{ "custom-header": "value" }'
 
-                # Content-Type Header value, if body is json string, then content-type default value is application/json
+                # Content-Type Header value, if data is json string, then content-type default value is application/json
                 content-type: application/json
 
                 # Params can be passed through json object string 
@@ -112,9 +112,9 @@ jobs:
               uses: actionsflow/axios@v1
               id: api
               with:
-                url: https://reqres.in/api/users
+                url: https://hookbin.com/eKgjENOKRYUeYYRdXL6W
                 method: 'POST'
-                body: '{ "name": "breeze",  "job": "devops" }'
+                data: '{ "name": "breeze",  "job": "devops" }'
             - run: echo ${{ steps.api.outputs.status }}
             - run: echo ${{ steps.api.outputs.data }}
             - run: echo ${{ steps.api.outputs.headers }}
