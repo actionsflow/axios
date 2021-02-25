@@ -31,7 +31,8 @@ export const sendRequestWithRetry = async (config: AxiosRequestConfig) => {
             if (core.getInput('is_debug') === 'true') {
                 core.info(`axios config: ${JSON.stringify(config,null,2)}`);
             }
-            const res = await axios(config)
+            // create axios with defaults then override with custom config
+            const res = await axios.create(config)
             setOutput(res)
             exit = true
         } catch (err) {
