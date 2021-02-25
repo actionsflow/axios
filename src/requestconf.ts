@@ -1,7 +1,7 @@
 
 import * as core from '@actions/core'
 import { AxiosRequestConfig, Method, AxiosBasicCredentials, AxiosProxyConfig} from 'axios'
-import {getEscapeString} from './util'
+import {getEscapeString, isObject, isURLSearchParams} from './util'
 // builder for request config
 
 const builder = {
@@ -85,7 +85,12 @@ if(config.data){
 }
 
 if(core.getInput('content-type')){
-    config.headers = { ...config.headers, 'Content-Type': core.getInput('content-typen') }
+    config.headers = { ...config.headers, 'Content-Type': core.getInput('content-type') }
+    if (core.getInput('content-type') === 'application/x-www-form-urlencoded') {
+        if (!isURLSearchParams(config.data) && isObject(config.data)) {
+            config.data = new URLSearchParams(config.data);
+        }
+    }
 }
 
 if(core.getInput('params')){
