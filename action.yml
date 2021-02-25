@@ -1,4 +1,4 @@
-name: 'Axios Action'
+name: 'Axios Action By Tommy'
 description: 'Make a request based on axios'
 inputs:
   url: 
