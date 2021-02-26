@@ -85,6 +85,7 @@ if(config.data){
 }
 
 if(core.getInput('content-type')){
+    core.info(`axios config: ${core.getInput('content-type')}`);
     config.headers = { ...config.headers, 'Content-Type': core.getInput('content-type') }
     if (core.getInput('content-type') === 'application/x-www-form-urlencoded') {
         if (!isURLSearchParams(config.data) && isObject(config.data)) {
