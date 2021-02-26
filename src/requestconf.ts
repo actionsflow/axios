@@ -5,7 +5,7 @@ import {
   AxiosBasicCredentials,
   AxiosProxyConfig,
 } from 'axios';
-import { getEscapeString, isObject, isURLSearchParams } from './util';
+import { getEscapeString, isObject, isURLSearchParams, isString } from './util';
 
 // builder for request config
 const builder = {
@@ -107,15 +107,17 @@ if (config.data) {
   }
 }
 
-core.info(`axios config: ${core.getInput('content-type')}`);
+core.info(`axios config: ${core.getInput('content-type')}, ${JSON.stringify(config.data)}`);
 if (core.getInput('content-type')) {
   config.headers = {
     ...config.headers,
     'Content-Type': core.getInput('content-type'),
   };
+
   if (core.getInput('content-type') === 'application/x-www-form-urlencoded') {
-    if (!isURLSearchParams(config.data) && isObject(config.data)) {
-      config.data = new URLSearchParams(config.data);
+    if (!isString(config.data)) {
+      const params = new URLSearchParams(config.data);
+      config.data = params.toString();
     }
   }
 }

@@ -135,3 +135,13 @@ export function isURLSearchParams(val: any) {
 export function isObject(val: any) {
   return val !== null && typeof val === 'object';
 }
+
+/**
+ * Determine if a value is a String
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a String, otherwise false
+ */
+export function isString(val: any) {
+  return val !== null && typeof val === 'string';
+}
