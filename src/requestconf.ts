@@ -117,7 +117,7 @@ if (core.getInput('content-type')) {
   if (core.getInput('content-type') === 'application/x-www-form-urlencoded') {
     if (!isString(config.data)) {
       const params = new URLSearchParams(config.data);
-      config.data = params.toString();
+      config.data = params;
     }
   }
 }
